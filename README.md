@@ -17,7 +17,6 @@ This script processes a list of maize gene IDs (ZM IDs), fetches the correspondi
 - [Script Workflow](#script-workflow)
 - [Error Handling](#error-handling)
 - [Output](#output)
-- [Notes and Considerations](#notes-and-considerations)
 - [License](#license)
 - [Contact Information](#contact-information)
 
@@ -59,7 +58,7 @@ This Python script automates the process of mapping maize gene IDs to their orth
 
 1. **Clone or Download the Script**:
 
-   Save the script as `maize_to_arabidopsis_with_retries.py`.
+   Save the script as `scraper.py`.
 
 2. **Install Required Python Libraries**:
 
@@ -99,7 +98,7 @@ This Python script automates the process of mapping maize gene IDs to their orth
    - Run the script using Python:
 
      ```bash
-     python maize_to_arabidopsis_with_retries.py
+     python scraper.py
      ```
 
 3. **Select Your CSV File**:
@@ -207,40 +206,6 @@ This Python script automates the process of mapping maize gene IDs to their orth
   Zm00001eb234690,AT2G23290,https://www.arabidopsis.org/locus?name=AT2G23290,Cysteine-rich RLK (RECEPTOR-like protein kinase) 2
   Zm00001eb235470,No AT ID found,,
   ```
-
----
-
-## **Notes and Considerations**
-
-- **NCBI E-utilities Usage Policies**:
-
-  - The script complies with NCBI's policies by limiting the frequency of requests and handling errors appropriately.
-  - Delays between requests are implemented to avoid overloading NCBI's servers.
-
-- **Dependencies**:
-
-  - Ensure all required Python libraries are installed before running the script.
-  - The script uses `PyQt5` for the file dialog interface.
-
-- **Data Verification**:
-
-  - After running the script, review the output CSV file to verify data accuracy.
-  - Check for any error messages in the output and address them if necessary.
-
-- **Customization**:
-
-  - You can modify the script to fetch additional data fields or to change the output format.
-  - Adjust the `max_retries` parameter and delay times as needed.
-
-- **Logging**:
-
-  - For better error tracking, consider implementing logging to a file.
-  - Use Python's `logging` module to record errors and statuses.
-
-- **Large Datasets**:
-
-  - For processing large numbers of IDs, be mindful of API usage limits.
-  - Consider implementing progress indicators or batching mechanisms.
 
 ---
 
