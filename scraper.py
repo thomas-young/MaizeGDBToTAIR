@@ -41,7 +41,11 @@ def fetch_ncbi_gene_description(at_id, max_retries=3):
                         esummary_data = esummary_response.json()
                         result = esummary_data.get('result', {})
                         gene_info = result.get(ncbi_gene_id, {})
-                        description = gene_info.get('summary', 'No description found')
+                        description = gene_info.get('summary')
+                        if not description:
+                            description = gene_info.get('description')
+                        if not description:
+                            description = 'No description found'
                         return description
                     elif esummary_response.status_code == 500:
                         print(f"Server error (500) when fetching description for AT ID {at_id}. Retrying...")
