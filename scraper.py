@@ -41,10 +41,15 @@ def fetch_ncbi_gene_description(at_id, max_retries=3):
                         esummary_data = esummary_response.json()
                         result = esummary_data.get('result', {})
                         gene_info = result.get(ncbi_gene_id, {})
-                        description = gene_info.get('summary')
-                        if not description:
-                            description = gene_info.get('description')
-                        if not description:
+                        summary = gene_info.get('summary', '')
+                        description_field = gene_info.get('description', '')
+                        if summary and description_field:
+                            description = f"{summary} {description_field}"
+                        elif summary:
+                            description = summary
+                        elif description_field:
+                            description = description_field
+                        else:
                             description = 'No description found'
                         return description
                     elif esummary_response.status_code == 500:
